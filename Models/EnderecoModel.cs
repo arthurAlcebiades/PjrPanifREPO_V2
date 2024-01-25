@@ -31,7 +31,10 @@ namespace PrjPaniMVCv2.Models
 
         public string Referencia { get; set; }
 
-        public bool Selecionado { get; set; }
+        public bool Selecionado { get; set; } 
+
+        //public RotaModel? Rota { get; set; }
+
 
         [NotMapped]
         public string EnderecoCompleto

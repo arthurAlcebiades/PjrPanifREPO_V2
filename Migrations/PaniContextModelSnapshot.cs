@@ -40,7 +40,24 @@ namespace PrjPaniMVCv2.Migrations
 
                     b.HasIndex("IdProduto");
 
-                    b.ToTable("ItemPedido", (string)null);
+                    b.ToTable("ItemPedido");
+                });
+
+            modelBuilder.Entity("PrjPaniMVCv2.Models.MotoristaModel", b =>
+                {
+                    b.Property<int>("IdMotorista")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdMotorista"));
+
+                    b.Property<string>("NomeMotorista")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("IdMotorista");
+
+                    b.ToTable("Motorista");
                 });
 
             modelBuilder.Entity("PrjPaniMVCv2.Models.PedidoModel", b =>
@@ -76,7 +93,7 @@ namespace PrjPaniMVCv2.Migrations
 
                     b.HasIndex("IdCliente");
 
-                    b.ToTable("Pedido", (string)null);
+                    b.ToTable("Pedido");
                 });
 
             modelBuilder.Entity("PrjPaniMVCv2.Models.ProdutoModel", b =>
@@ -102,6 +119,23 @@ namespace PrjPaniMVCv2.Migrations
                     b.HasKey("IdProduto");
 
                     b.ToTable("Produto", (string)null);
+                });
+
+            modelBuilder.Entity("PrjPaniMVCv2.Models.RotaModel", b =>
+                {
+                    b.Property<int>("IdRota")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdRota"));
+
+                    b.Property<string>("ApelidoRota")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("IdRota");
+
+                    b.ToTable("Rota");
                 });
 
             modelBuilder.Entity("PrjPaniMVCv2.Models.UsuarioModel", b =>
@@ -132,7 +166,7 @@ namespace PrjPaniMVCv2.Migrations
 
                     b.HasKey("IdUsuario");
 
-                    b.ToTable("Usuario", (string)null);
+                    b.ToTable("Usuario");
 
                     b.UseTptMappingStrategy();
                 });
@@ -149,7 +183,7 @@ namespace PrjPaniMVCv2.Migrations
                         .IsRequired()
                         .HasColumnType("char(11)");
 
-                    b.ToTable("Cliente", (string)null);
+                    b.ToTable("Cliente");
                 });
 
             modelBuilder.Entity("PrjPaniMVCv2.Models.ItemPedidoModel", b =>
@@ -179,7 +213,7 @@ namespace PrjPaniMVCv2.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("PrjPaniMVCv2.Models.PedidoModel.EnderecoEntrega#PrjPaniMVCv2.Models.EnderecoModel", "EnderecoEntrega", b1 =>
+                    b.OwnsOne("PrjPaniMVCv2.Models.EnderecoModel", "EnderecoEntrega", b1 =>
                         {
                             b1.Property<int>("PedidoModelIdPedido")
                                 .HasColumnType("integer");
@@ -237,7 +271,7 @@ namespace PrjPaniMVCv2.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsMany("PrjPaniMVCv2.Models.ClienteModel.Enderecos#PrjPaniMVCv2.Models.EnderecoModel", "Enderecos", b1 =>
+                    b.OwnsMany("PrjPaniMVCv2.Models.EnderecoModel", "Enderecos", b1 =>
                         {
                             b1.Property<int>("IdUsuario")
                                 .HasColumnType("integer");
@@ -285,7 +319,7 @@ namespace PrjPaniMVCv2.Migrations
 
                             b1.HasKey("IdUsuario", "IdEndereco");
 
-                            b1.ToTable("Endereco", (string)null);
+                            b1.ToTable("Endereco");
 
                             b1.WithOwner()
                                 .HasForeignKey("IdUsuario");

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MotoristaModel>
+@{
+    ViewBag.Subtitulo = "Listagem de Motoristas";
+}
+
+<header class="d-flex justify-content-between align-items-center">
+    <div>
+        <h1 class="text-primary">@ViewBag.Subtitulo</h1>
+    </div>
+    <div>
+        <a asp-action="Cadastrar" class="btn btn-primary">Novo Motorista</a>
+    </div>
+</header>
+<hr>
+
+<partial name="_Mensagem"></partial>
+
+@if (Model.Count() > 0)
+{
+    <table class="table table-striped tabela-produtos">
+        <thead>
+            <tr>
+                <th>Nome do Motorista</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var motorista in Model)
+            {
+                <tr>
+                    <td>@motorista.NomeMotorista</td>
+                    <td>
+                        <a asp-action="Cadastrar" asp-route-id="@motorista.IdMotorista" class="btn btn-sm btn-secondary"><i class="bi-pencil" title="Alterar"></i></a>
+                        <a asp-action="Excluir" asp-route-id="@motorista.IdMotorista" class="btn btn-sm btn-danger"><i class="bi-trash" title="Excluir"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Não há nenhum motorista cadastrado.</p>
+}
