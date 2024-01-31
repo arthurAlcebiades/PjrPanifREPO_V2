@@ -11,8 +11,8 @@ namespace PrjPaniMVCv2.Models
         [Required, Column(TypeName = "char(11)")]
         public string TelefoneContatoCliente { get; set; }
 
-        public ICollection<EnderecoModel> Enderecos { get; set; }
+        public ICollection<EnderecoModel>? Enderecos { get; set; }
 
-        public ICollection<PedidoModel> Pedidos { get; set; }
+        public ICollection<PedidoModel>? Pedidos { get; set; }
     }
 }

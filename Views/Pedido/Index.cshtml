@@ -23,9 +23,7 @@
             <tr>
                 <th>Número</th>
                 <th>Data/Hora Pedido</th>
-                <th>Data Início da Recorrência</th>
-                <th>Data Final da Recorrência</th>
-                <th>Observações</th>
+                
                 <th>Valor Total</th>
                 <th>Data/Hora Entrega</th>
                 <th>Ações</th>
@@ -37,9 +35,7 @@
                 <tr>
                     <td>@pedido.IdPedido.ToString("D4")</td>
                     <td>@(pedido.DataPedido.HasValue ? pedido.DataPedido : "Em Aberto")</td>
-                    <td>@(pedido.DataInicioRecorrencia)</td>
-                    <td>@(pedido.DataFinalRecorrencia)</td>
-                    <td>@(pedido.Observacao)</td>
+                    
                     <td>@pedido.ValorTotal.Value.ToString("C")</td>
                     <td>@(pedido.DataEntrega.HasValue ? pedido.DataEntrega : "Não Entregue")</td>
                     <td>
@@ -61,6 +57,7 @@
                             <span class="btn btn-sm btn-light"><i class="bi-truck text-gray" title="Feche o pedido antes de registrar a entrega"></i></span>
                         }
                         <a asp-action="Index" asp-controller="ItemPedido" asp-route-ped="@pedido.IdPedido" class="btn btn-sm btn-info"><i class="bi-list-check" title="Itens do pedido"></i></a>
+                        <a asp-action="Index" asp-controller="MotoristaPedido" asp-route-ped="@pedido.IdPedido" class="btn btn-sm btn-info"><i class="bi-list-check" title="Motoristas"></i></a>
                         <a asp-action="Excluir" asp-route-id="@pedido.IdPedido" class="btn btn-sm btn-danger"><i class="bi-trash" title="Excluir pedido"></i></a>
                     </td>
                 </tr>

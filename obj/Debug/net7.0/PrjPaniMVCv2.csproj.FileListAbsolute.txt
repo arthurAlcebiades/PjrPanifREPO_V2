@@ -371,3 +371,10 @@ C:\Estudos\PrjPaniMVCv2\PrjPaniMVCv2\obj\Debug\net7.0\PrjPaniMVCv2.pdb
 C:\Estudos\PrjPaniMVCv2\PrjPaniMVCv2\obj\Debug\net7.0\PrjPaniMVCv2.genruntimeconfig.cache
 C:\Estudos\PrjPaniMVCv2\PrjPaniMVCv2\obj\Debug\net7.0\ref\PrjPaniMVCv2.dll
 C:\Estudos\PrjPaniMVCv2\PrjPaniMVCv2\bin\Debug\net7.0\libman.json
+C:\Estudos\PrjPaniMVCv2\PrjPaniMVCv2\bin\Debug\net7.0\System.Web.Mvc.dll
+C:\Estudos\PrjPaniMVCv2\PrjPaniMVCv2\bin\Debug\net7.0\System.Web.Razor.dll
+C:\Estudos\PrjPaniMVCv2\PrjPaniMVCv2\bin\Debug\net7.0\System.Web.Helpers.dll
+C:\Estudos\PrjPaniMVCv2\PrjPaniMVCv2\bin\Debug\net7.0\System.Web.WebPages.Deployment.dll
+C:\Estudos\PrjPaniMVCv2\PrjPaniMVCv2\bin\Debug\net7.0\System.Web.WebPages.Razor.dll
+C:\Estudos\PrjPaniMVCv2\PrjPaniMVCv2\bin\Debug\net7.0\System.Web.WebPages.dll
+C:\Estudos\PrjPaniMVCv2\PrjPaniMVCv2\bin\Debug\net7.0\Microsoft.Web.Infrastructure.dll

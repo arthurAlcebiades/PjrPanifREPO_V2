@@ -1,0 +1,71 @@
+﻿@model IEnumerable<MotoristaPedido>
+@{
+    var pedido = ViewBag.Pedido as PedidoModel;
+    ViewBag.Subtitulo = $"Motorista do Pedido <b>{pedido.IdPedido:D4}</b>";
+}
+
+<header class="d-flex justify-content-between align-items-center">
+    <div>
+        <h1 class="text-primary">
+            @Html.Raw(ViewBag.Subtitulo)
+            @(pedido.DataPedido.HasValue ? "(Fechado)" : "")
+        </h1>
+    </div>
+    @if (!pedido.DataPedido.HasValue)
+    {
+        <div>
+            <a asp-action="Cadastrar" asp-route-ped="@pedido.IdPedido" class="btn btn-primary">Novo Motorista</a>
+        </div>
+    }
+</header>
+<hr>
+
+@if (pedido.DataEntrega.HasValue)
+{
+    <h6>Endereço de entrega: @pedido.EnderecoEntrega.EnderecoCompleto</h6>
+    <hr>
+}
+
+<partial name="_Mensagem"></partial>
+
+@if (Model.Count() > 0)
+{
+    <table class="table table-striped tabela-itens">
+        <thead>
+            <tr>
+                <th>Motorista</th>
+                @if (!pedido.DataPedido.HasValue)
+                {
+                    <th>Ações</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var motoristaPedido in Model)
+            {
+                <tr>
+                    <td>@motoristaPedido.Motoristas.NomeMotorista</td>
+                    @if (!pedido.DataPedido.HasValue)
+                    {
+                        <td>
+                            <a asp-action="Cadastrar" asp-route-ped="@motoristaPedido.IdPedido" asp-route-med="@motoristaPedido.IdMotorista"
+                               class="btn btn-sm btn-secondary"><i class="bi-pencil" title="Alterar"></i></a>
+                            <a asp-action="Excluir" asp-route-ped="@motoristaPedido.IdPedido" asp-route-med="@motoristaPedido.IdMotorista"
+                               class="btn btn-sm btn-danger"><i class="bi-trash" title="Excluir"></i></a>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Não há nenhum motorista cadastrado.</p>
+    <hr>
+}
+
+<div class="d-flex justify-content-end align-items-center gap-2">
+    <a asp-action="Index" asp-controller="Pedido" asp-route-cid="@pedido.IdCliente"
+       class="btn btn-outline-success">Voltar</a>
+</div>

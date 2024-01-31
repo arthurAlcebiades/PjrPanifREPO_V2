@@ -60,6 +60,30 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbVBlZGlkb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Estudos/PrjPaniMVCv2/PrjPaniMVCv2/Views/MotoristaPedido/Cadastrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b3Jpc3RhUGVkaWRvXENhZGFzdHJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Estudos/PrjPaniMVCv2/PrjPaniMVCv2/Views/MotoristaPedido/Excluir.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b3Jpc3RhUGVkaWRvXEV4Y2x1aXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Estudos/PrjPaniMVCv2/PrjPaniMVCv2/Views/MotoristaPedido/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b3Jpc3RhUGVkaWRvXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Estudos/PrjPaniMVCv2/PrjPaniMVCv2/Views/Motorista/Cadastrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b3Jpc3RhXENhZGFzdHJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Estudos/PrjPaniMVCv2/PrjPaniMVCv2/Views/Motorista/Excluir.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b3Jpc3RhXEV4Y2x1aXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Estudos/PrjPaniMVCv2/PrjPaniMVCv2/Views/Motorista/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b3Jpc3RhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Estudos/PrjPaniMVCv2/PrjPaniMVCv2/Views/Pedido/Entregar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvXEVudHJlZ2FyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -86,6 +110,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Estudos/PrjPaniMVCv2/PrjPaniMVCv2/Views/Produto/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Estudos/PrjPaniMVCv2/PrjPaniMVCv2/Views/Rota/Cadastrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm90YVxDYWRhc3RyYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Estudos/PrjPaniMVCv2/PrjPaniMVCv2/Views/Rota/Excluir.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm90YVxFeGNsdWlyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Estudos/PrjPaniMVCv2/PrjPaniMVCv2/Views/Rota/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm90YVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Estudos/PrjPaniMVCv2/PrjPaniMVCv2/Views/Shared/Error.cshtml]
