@@ -51,13 +51,42 @@ namespace PrjPaniMVCv2.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdMotorista"));
 
+                    b.Property<string>("ApelidoRota")
+                        .HasColumnType("text");
+
+                    b.Property<int>("IdPedido")
+                        .HasColumnType("integer");
+
                     b.Property<string>("NomeMotorista")
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int?>("PedidoIdPedido")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Turno")
+                        .HasColumnType("text");
+
                     b.HasKey("IdMotorista");
 
+                    b.HasIndex("PedidoIdPedido");
+
                     b.ToTable("Motorista");
+                });
+
+            modelBuilder.Entity("PrjPaniMVCv2.Models.MotoristaPedido", b =>
+                {
+                    b.Property<int>("IdPedido")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("IdMotorista")
+                        .HasColumnType("integer");
+
+                    b.HasKey("IdPedido", "IdMotorista");
+
+                    b.HasIndex("IdMotorista");
+
+                    b.ToTable("MotoristasPedidos");
                 });
 
             modelBuilder.Entity("PrjPaniMVCv2.Models.PedidoModel", b =>
@@ -83,6 +112,9 @@ namespace PrjPaniMVCv2.Migrations
                     b.Property<int>("IdCliente")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("IdMotorista")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Observacao")
                         .HasColumnType("text");
 
@@ -92,6 +124,8 @@ namespace PrjPaniMVCv2.Migrations
                     b.HasKey("IdPedido");
 
                     b.HasIndex("IdCliente");
+
+                    b.HasIndex("IdMotorista");
 
                     b.ToTable("Pedido");
                 });
@@ -205,6 +239,34 @@ namespace PrjPaniMVCv2.Migrations
                     b.Navigation("Produto");
                 });
 
+            modelBuilder.Entity("PrjPaniMVCv2.Models.MotoristaModel", b =>
+                {
+                    b.HasOne("PrjPaniMVCv2.Models.PedidoModel", "Pedido")
+                        .WithMany()
+                        .HasForeignKey("PedidoIdPedido");
+
+                    b.Navigation("Pedido");
+                });
+
+            modelBuilder.Entity("PrjPaniMVCv2.Models.MotoristaPedido", b =>
+                {
+                    b.HasOne("PrjPaniMVCv2.Models.MotoristaModel", "Motoristas")
+                        .WithMany()
+                        .HasForeignKey("IdMotorista")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PrjPaniMVCv2.Models.PedidoModel", "Pedidos")
+                        .WithMany("MotoristaPedidos")
+                        .HasForeignKey("IdPedido")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Motoristas");
+
+                    b.Navigation("Pedidos");
+                });
+
             modelBuilder.Entity("PrjPaniMVCv2.Models.PedidoModel", b =>
                 {
                     b.HasOne("PrjPaniMVCv2.Models.ClienteModel", "Cliente")
@@ -212,6 +274,10 @@ namespace PrjPaniMVCv2.Migrations
                         .HasForeignKey("IdCliente")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("PrjPaniMVCv2.Models.MotoristaModel", "Motorista")
+                        .WithMany("Pedidos")
+                        .HasForeignKey("IdMotorista");
 
                     b.OwnsOne("PrjPaniMVCv2.Models.EnderecoModel", "EnderecoEntrega", b1 =>
                         {
@@ -261,6 +327,8 @@ namespace PrjPaniMVCv2.Migrations
                     b.Navigation("Cliente");
 
                     b.Navigation("EnderecoEntrega");
+
+                    b.Navigation("Motorista");
                 });
 
             modelBuilder.Entity("PrjPaniMVCv2.Models.ClienteModel", b =>
@@ -328,9 +396,16 @@ namespace PrjPaniMVCv2.Migrations
                     b.Navigation("Enderecos");
                 });
 
+            modelBuilder.Entity("PrjPaniMVCv2.Models.MotoristaModel", b =>
+                {
+                    b.Navigation("Pedidos");
+                });
+
             modelBuilder.Entity("PrjPaniMVCv2.Models.PedidoModel", b =>
                 {
                     b.Navigation("ItensPedido");
+
+                    b.Navigation("MotoristaPedidos");
                 });
 
             modelBuilder.Entity("PrjPaniMVCv2.Models.ClienteModel", b =>

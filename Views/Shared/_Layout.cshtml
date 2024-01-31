@@ -6,7 +6,7 @@
     var classeMenuProdutos = controllerAtual == "Produto" ? "active" : "";
     var classeMenuClientes = controllerAtual == "Cliente" ? "active" : "";
     var classeMenuMotoristas = controllerAtual == "Motorista" ? "active" : "";
-    var classeMenuRotas = controllerAtual == "Rota" ? "active" : "";
+    //var classeMenuRotas = controllerAtual == "Rota" ? "active" : "";
 }
 
 <!DOCTYPE html >
@@ -33,7 +33,7 @@
                     <a class="nav-link @classeMenuProdutos" asp-controller="Produto" asp-action="Index">Produtos</a>
                     <a class="nav-link @classeMenuClientes" asp-controller="Cliente" asp-action="Index">Clientes</a>
                     <a class="nav-link @classeMenuMotoristas" asp-controller="Motorista" asp-action="Index">Motoristas</a>
-                    <a class="nav-link @classeMenuRotas" asp-controller="Rota" asp-action="Index">Rotas</a>
+                    
                 </div>
             </div>
         </div>

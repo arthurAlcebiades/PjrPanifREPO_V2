@@ -60,6 +60,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbVBlZGlkb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Estudos/PrjPaniMVCv2/PrjPaniMVCv2/Views/MotoristaPedido/Cadastrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b3Jpc3RhUGVkaWRvXENhZGFzdHJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Estudos/PrjPaniMVCv2/PrjPaniMVCv2/Views/MotoristaPedido/Excluir.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b3Jpc3RhUGVkaWRvXEV4Y2x1aXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Estudos/PrjPaniMVCv2/PrjPaniMVCv2/Views/MotoristaPedido/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b3Jpc3RhUGVkaWRvXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Estudos/PrjPaniMVCv2/PrjPaniMVCv2/Views/Motorista/Cadastrar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b3Jpc3RhXENhZGFzdHJhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

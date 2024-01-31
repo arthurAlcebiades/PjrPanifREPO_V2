@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PrjPaniMVCv2.Models;
 
@@ -22,6 +23,7 @@ namespace PrjPaniMVCv2.Controllers
                 {
                     var pedidos = await _context.Pedidos
                         .Where(p => p.IdCliente == cid)
+                        //.Include(p => p.Motorista)
                         .OrderByDescending(x => x.IdPedido)
                         .AsNoTracking().ToListAsync();
 
@@ -283,5 +285,112 @@ namespace PrjPaniMVCv2.Controllers
                 return RedirectToAction("Index", "Cliente");
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Inserir(int? id)
+        {
+            if (!id.HasValue)
+            {
+                TempData["mensagem"] = MensagemModel.Serializar("Pedido não informado.", TipoMensagem.Erro);
+                return RedirectToAction("Index");
+            }
+
+            if (!PedidoExiste(id.Value))
+            {
+                TempData["mensagem"] = MensagemModel.Serializar("Pedido não encontrado.", TipoMensagem.Erro);
+                return RedirectToAction("Index", "Cliente");
+            }
+
+            var pedido = await _context.Pedidos
+                .Include(p => p.Motorista)
+                .FirstOrDefaultAsync(p => p.IdPedido == id);
+
+            return View(pedido);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Inserir(int idPedido, int idMotorista)
+        {
+            if (PedidoExiste(idPedido))
+            {
+                var pedido = await _context.Pedidos
+                    .Include(p => p.Motorista)
+                    .FirstOrDefaultAsync(p => p.IdPedido == idPedido);
+
+                var motorista = pedido.Motorista.IdMotorista;
+                //.FirstOrDefault(e => e.IdMotorista == idMotorista );
+
+                if (motorista != null)
+                {
+
+                    if (await _context.SaveChangesAsync() > 0)
+                        TempData["mensagem"] = MensagemModel.Serializar("Motorista registrado com sucesso.");
+                    else
+                        TempData["mensagem"] = MensagemModel.Serializar("Não foi possível registrar o motorista do pedido.", TipoMensagem.Erro);
+                    return RedirectToAction("Index", new { mid = pedido.IdMotorista });
+                }
+                else
+                {
+                    TempData["mensagem"] = MensagemModel.Serializar("Motorista não encontrado.", TipoMensagem.Erro);
+                    return RedirectToAction("Index", new { mid = pedido.IdMotorista });
+                }
+            }
+            else
+            {
+                TempData["mensagem"] = MensagemModel.Serializar("Pedido não encontrado.", TipoMensagem.Erro);
+                return RedirectToAction("Index", "Motorista");
+            }
+        }
+
+        /*
+        [HttpPost]
+        public async Task<IActionResult> CadastrarMotorista([FromForm] MotoristaModel motoristaModel)
+        {
+            if (ModelState.IsValid)
+            {
+                if (motoristaModel.IdPedido > 0)
+                {
+                    var motorista = await _context.Motoristas.FindAsync(motoristaModel.IdMotorista);
+                    //itemPedido.ValorUnitario = produto.Preco;
+                    if (motoristaModel.IdMotorista != 0 )
+                    {
+                        _context.Motoristas.Update(motoristaModel);
+                        if (await _context.SaveChangesAsync() > 0)
+                            TempData["mensagem"] = MensagemModel.Serializar("Motorista alterado com sucesso.");
+                        else
+                            TempData["mensagem"] = MensagemModel.Serializar("Erro ao cadastro de motorista.", TipoMensagem.Erro);
+                    }
+                    else
+                    {
+                        _context.Motoristas.Add(motoristaModel);
+                        if (await _context.SaveChangesAsync() > 0)
+                            TempData["mensagem"] = MensagemModel.Serializar("Motorista cadastrado com sucesso.");
+                        else
+                            TempData["mensagem"] = MensagemModel.Serializar("Erro ao cadastrar Motorista.", TipoMensagem.Erro);
+                    }
+                    var motoristas = await _context.Motoristas.FindAsync(motoristaModel.IdMotorista);
+                   
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Index", new { mot = motoristaModel.IdMotorista });
+                }
+                else
+                {
+                    TempData["mensagem"] = MensagemModel.Serializar("Motorista não informado.", TipoMensagem.Erro);
+                    return RedirectToAction("Index", "Cliente");
+                }
+            }
+            else
+            {
+                var motoristas = _context.Motoristas
+                        .OrderBy(x => x.NomeMotorista)
+                        .Select(p => new { p.IdMotorista, NomeMotorista = $"{p.NomeMotorista}" })
+                        .AsNoTracking().ToList();
+                var motoristasSelectList = new SelectList(motoristas, "IdMotorista", "NomeMotorista");
+                ViewBag.Motoristas = motoristasSelectList;
+
+                return View(motoristaModel);
+            }
+        }
+        */
     }
 }

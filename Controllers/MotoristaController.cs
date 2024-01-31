@@ -13,7 +13,11 @@ namespace PrjPaniMVCv2.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var motoristas = await _context.Motoristas.OrderBy(x => x.NomeMotorista).AsNoTracking().ToListAsync();
+            var motoristas = await _context.Motoristas
+                .Include(m => m.Pedidos)
+                .OrderBy(x => x.NomeMotorista)
+                .AsNoTracking()
+                .ToListAsync();
             return View(motoristas);
         }
 
@@ -34,7 +38,7 @@ namespace PrjPaniMVCv2.Controllers
 
         private bool MotoristaExiste(int id)
         {
-        return _context.Motoristas.Any(x => x.IdMotorista == id);
+            return _context.Motoristas.Any(x => x.IdMotorista == id);
         }
 
         [HttpPost]
@@ -118,6 +122,13 @@ namespace PrjPaniMVCv2.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
+
+        private bool PedidoExiste(int id)
+        {
+            return _context.Pedidos.Any(x => x.IdPedido == id);
+        }
+
+        
     }
 }
 

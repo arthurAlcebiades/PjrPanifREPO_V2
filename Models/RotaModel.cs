@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PrjPaniMVCv2.Models
@@ -9,8 +10,6 @@ namespace PrjPaniMVCv2.Models
         [Key]
         public int IdRota { get; set; }
         public string ApelidoRota { get; set; }
-
-        //public ICollection<AssociacaoRotaMotoristaModel>? Motoristas { get; set; }
-        //public ICollection<EnderecoModel> Enderecos { get; set; }
+        
     }
 }

@@ -11,12 +11,11 @@
             @(pedido.DataPedido.HasValue ? "(Fechado)" : "")
         </h1>
     </div>
-    @if (!pedido.DataPedido.HasValue)
-    {
+
         <div>
             <a asp-action="Cadastrar" asp-route-ped="@pedido.IdPedido" class="btn btn-primary">Novo Item</a>
         </div>
-    }
+    
 </header>
 <h5>Cliente: <b>@pedido.Cliente.Nome</b></h5>
 <hr>

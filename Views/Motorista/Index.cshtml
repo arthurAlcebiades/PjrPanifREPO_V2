@@ -19,16 +19,21 @@
 {
     <table class="table table-striped tabela-produtos">
         <thead>
-            <tr>
+            <tr> 
                 <th>Nome do Motorista</th>
+                <th>Rota</th>
+                <th>Turno</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var motorista in Model)
+            
             {
-                <tr>
-                    <td>@motorista.NomeMotorista</td>
+                    <tr>
+                        <td>@motorista.NomeMotorista</td>
+                        <td>@motorista.ApelidoRota</td>
+                        <td>@motorista.Turno</td>
                     <td>
                         <a asp-action="Cadastrar" asp-route-id="@motorista.IdMotorista" class="btn btn-sm btn-secondary"><i class="bi-pencil" title="Alterar"></i></a>
                         <a asp-action="Excluir" asp-route-id="@motorista.IdMotorista" class="btn btn-sm btn-danger"><i class="bi-trash" title="Excluir"></i></a>
